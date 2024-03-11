@@ -1,0 +1,38 @@
+.dashboard {
+    margin: 90px 0 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard__button {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.dashboard__button:hover {
+    background: rgba(120, 3, 133, 0.8);
+}
+
+.dashboard__image {
+    width: 25px;
+    height: 25px;
+    color: #fff;
+}
+
+.dashboard__image-s {
+    width: 15px;
+}

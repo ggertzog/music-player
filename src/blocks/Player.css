@@ -1,0 +1,15 @@
+.player {
+    margin: 0;
+    padding: 0 10px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 345px;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(#9300B4, #28053E );
+    padding-bottom: 120px;
+    border-radius: 35px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
