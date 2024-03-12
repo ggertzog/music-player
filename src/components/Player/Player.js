@@ -13,9 +13,10 @@ export default function Player({isPlay, togglePlay, nextSong}) {
             isPlay={isPlay}
         />
         <Slider />
-        <Dashboard 
-            togglePlay={togglePlay}
-            nextSong={nextSong}
+        <Dashboard
+          isPlay={isPlay}  
+          togglePlay={togglePlay}
+          nextSong={nextSong}
         />
     </div>
   )
