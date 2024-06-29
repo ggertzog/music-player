@@ -1,0 +1,36 @@
+/* normalization */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ol,
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+li,
+ol,
+ul {
+    margin: 0;
+}
+
+input,
+button {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
