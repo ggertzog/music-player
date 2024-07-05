@@ -1,0 +1,1 @@
+export { DiscoverGenre } from './ui';

@@ -1,0 +1,30 @@
+.songs-list {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.image {
+    height: 26px;
+}
+
+.title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}

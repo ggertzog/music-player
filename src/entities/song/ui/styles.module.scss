@@ -1,0 +1,99 @@
+.song {
+    margin: 0;
+    padding: 10px 16px;
+    width: 762px;
+    display: flex;
+    background-color: #1D1D1D;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.song-box {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.number {
+    margin: 0;
+    padding: 0;
+    color: #B8B8B8;
+    font-size: 27px;
+    font-weight: 500;
+
+    &_type_active {
+        background-image: linear-gradient(90deg, #ac15a1 0%, #800cb2 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.artist {
+    margin: 0;
+    padding: 0;
+    width: 58px;
+    height: 58px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50px;
+
+    &_type_active {
+        border: 2px solid purple;
+    }
+}
+
+.description {
+    margin: 0;
+    padding: 0;
+    color: #B8B8B8;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+
+    &_type_active {
+        background-image: linear-gradient(90deg, #ac15a1 0%, #800cb2 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.duration {
+    margin: 0;
+    padding: 0;
+    color: #B8B8B8;
+    font-size: 16px;
+    font-weight: 400;
+
+    &_type_active {
+        background-image: linear-gradient(90deg, #ac15a1 0%, #800cb2 100%);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.icon {
+    margin: 0;
+    padding: 0;
+    width: 23px;
+    height: 26px;
+}
+
+.button {
+    margin: 0;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.image {
+    margin: 0;
+    padding: 0;
+    width: 26px;
+    height: 26px;
+}

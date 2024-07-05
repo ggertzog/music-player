@@ -1,0 +1,29 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.image {
+    height: 26px;
+}
+
+.container {
+    margin: 0 auto 0;
+    width: 762px;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,9 @@
+.container {
+    padding: 40px;
+    box-sizing: border-box;
+    z-index: 2;
+    background-color: #111111;
+    -webkit-box-shadow: -20px -1px 22px -1px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: -20px -1px 22px -1px rgba(0, 0, 0, 0.47);
+    box-shadow: -20px -1px 22px -1px rgba(0, 0, 0, 0.47);
+}
