@@ -1,0 +1,100 @@
+$active-color: #ac15a1; // Активный цвет
+$line-thickness: 3px; // Толщина линии
+$thumb-size-l: 20px; // Размер ползунка
+$track-size-l: 455px;
+$thumb-size-s: 10px;
+$track-width-s: 58px;
+
+
+.input {
+    
+    $combined-color: color-mix(in srgb, $active-color, #000 var(--p, 0%)); // Комбинированный цвет
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50px;
+
+    &_type_s {
+        width: $track-width-s;
+        $thumb-border: $thumb-size-s; // Граница ползунка
+        height: $thumb-size-s; // Необходимо для Firefox
+
+        &:active,
+        &:focus-visible {
+            $thumb-border: $thumb-size-s;
+        }
+
+        &::-webkit-slider-thumb {
+            height: $thumb-size-s;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            box-shadow: 0 0 0 $thumb-border inset $combined-color;
+            border-image: linear-gradient(90deg, $combined-color 50%, #464646 0) 0 1/calc(50% - $line-thickness/2) 100vw/0 100vw;
+            -webkit-appearance: none;
+            appearance: none;
+            transition: .3s;
+        }
+
+        &::-moz-range-thumb {
+            height: $thumb-size-s;
+            width: $thumb-size-s;
+            background: none;
+            border-radius: 50%;
+            box-shadow: 0 0 0 $thumb-border inset $combined-color;
+            border-image: linear-gradient(90deg, $combined-color 50%, #464646 0) 0 1/calc(50% - $line-thickness/2) 100vw/0 100vw;
+            -moz-appearance: none;
+            appearance: none;
+            transition: .3s;
+        }
+    }
+
+    &_type_l {
+        width: $track-size-l;
+        $thumb-border: $thumb-size-l; // Граница ползунка
+        height: $thumb-size-l; // Необходимо для Firefox
+
+        &:active,
+        &:focus-visible {
+            $thumb-border: $thumb-size-l;
+        }
+
+        // Chromium
+        &::-webkit-slider-thumb {
+            height: $thumb-size-l;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            box-shadow: 0 0 0 $thumb-border inset $combined-color;
+            border-image: linear-gradient(90deg, $combined-color 50%, #464646 0) 0 1/calc(50% - $line-thickness/2) 100vw/0 100vw;
+            -webkit-appearance: none;
+            appearance: none;
+            transition: .3s;
+        }
+
+        &::-moz-range-thumb {
+            height: $thumb-size-l;
+            width: $thumb-size-l;
+            background: none;
+            border-radius: 50%;
+            box-shadow: 0 0 0 $thumb-border inset $combined-color;
+            border-image: linear-gradient(90deg, $combined-color 50%, #464646 0) 0 1/calc(50% - $line-thickness/2) 100vw/0 100vw;
+            -moz-appearance: none;
+            appearance: none;
+            transition: .3s;
+        }
+    }
+
+    &:focus-visible,
+    &:hover {
+        $percentage: 25%;
+    }
+}
+
+@supports not (color: color-mix(in srgb, red, red)) {
+    input {
+        $combined-color: $active-color; // Если функция color-mix не поддерживается
+    }
+}

@@ -6,13 +6,14 @@ import play from '@/shared/assets/icons/play-song.svg';
 import pause from '@/shared/assets/icons/pause-song.svg';
 
 interface ISong {
-    duration: number,
-    image: string,
-    artist: string,
-    song: string
+    duration: number;
+    image: string;
+    artist: string;
+    song: string;
+    number: number;
 }
 
-export const Song: FC<ISong> = ({duration, image, artist, song}) => {
+export const Song: FC<ISong> = ({duration, image, artist, song, number}) => {
 
     const[isPlay, setIsPlay] = useState(false);
 
@@ -25,7 +26,7 @@ export const Song: FC<ISong> = ({duration, image, artist, song}) => {
     return (
         <div className={styles.song}>
             <div className={styles['song-box']}>
-                <span className={cx('number', {'number_type_active' : isPlay})}>01</span>
+                <span className={cx('number', {'number_type_active' : isPlay})}>{`0${number}`}</span>
                 <img className={cx('artist', {'artist_type_active' : isPlay})} src={image} alt="Artist" />
                 <p className={cx('description', {'description_type_active' : isPlay})}>{`${artist} - ${song}`}</p>
             </div>

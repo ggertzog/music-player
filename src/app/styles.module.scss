@@ -1,6 +1,10 @@
 .app {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     display: grid;
+    grid-template-areas: 
+    'menu content blog'
+    'player player player';
     grid-template-columns: 275px auto 348px;
+    position: relative;
 }

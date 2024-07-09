@@ -13,7 +13,7 @@ export const SongsList = () => {
             </div>
             <div className={styles.box}>
                 {data.map((item) => {
-                    return <Song key={item.id} artist={item.artist} image={item.image} song={item.song} duration={item.duration} />
+                    return <Song key={item.id} number={item.id} artist={item.artist} image={item.image} song={item.song} duration={item.duration} />
                 })}
             </div>
         </div>

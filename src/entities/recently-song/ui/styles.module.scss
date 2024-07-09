@@ -1,0 +1,57 @@
+.recently-song {
+    display: flex;
+    width: 280px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #23232367;
+    padding: 10px 15px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    &:nth-child(1) {
+        gap: 15px;
+    }
+
+    &:nth-child(2) {
+        gap: 25px;
+    }
+}
+
+.preview {
+    width: 44px;
+    height: 44px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+.title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.counter {
+    color: #B8B8B8;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.button {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.image {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    object-position: center;
+}
