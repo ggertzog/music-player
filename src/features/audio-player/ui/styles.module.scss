@@ -1,0 +1,70 @@
+.decription {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.box {
+    width: 150px;
+}
+
+.image {
+    width: 76px;
+    height: 76px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.song {
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.artist {
+    font-size: 12px;
+    font-weight: 400;
+    color: #f1f1f1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.control-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.volume-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.volume-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.volume-slider {
+    width: 58px;
+    height: 5px;
+}
+
+.optional-container {
+    width: 194px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-player {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

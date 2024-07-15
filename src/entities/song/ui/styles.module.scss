@@ -52,6 +52,10 @@
     font-size: 16px;
     font-weight: 400;
     letter-spacing: 1.5px;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 
     &_type_active {
         background-image: linear-gradient(90deg, #ac15a1 0%, #800cb2 100%);

@@ -1,0 +1,23 @@
+@import '@/index';
+
+.button {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: #7A7A7A;
+ 
+    &_type_active {
+        color: #ac15a1;
+    }
+    // color: red;
+}
+
+.image {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    object-position: center;
+}

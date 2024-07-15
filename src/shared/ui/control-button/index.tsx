@@ -25,12 +25,12 @@ interface IButton {
 
 const cn = classNames.bind(styles);
 
-const ControlButton: FC<IButton> = ({theme}) => {
+const ControlButton: FC<IButton> = ({theme, onClick}) => {
 
     const image = icons[theme];
 
     return (
-        <button className={cn('button')}>
+        <button className={cn('button')} onClick={onClick}>
             <img className={styles.image} src={image} alt={theme} />
         </button>
     )
