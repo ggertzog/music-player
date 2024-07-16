@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useRef, useState } from "react";
 
 // создать тип для трека
 export type Track = {
@@ -9,11 +9,14 @@ export type Track = {
     image: string;
     audioSrc: string;
 }
-// создать тип для контекста
 
+// создать тип для контекста
 type TrackContextType = {
     currentTrack: Track | null;
     setCurrentTrack: (track: Track) => void;
+    audioRef: React.RefObject<HTMLAudioElement>;
+    isPlaying: boolean;
+    setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const TrackContext = createContext<TrackContextType | undefined>(undefined);
@@ -27,9 +30,14 @@ export const useTrack = () => {
 }
 
 export const TrackProvider = ({children}: {children: ReactNode}) => {
+
     const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+    const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    
+    const audioRef = useRef<HTMLAudioElement>(null);
+
     return (
-        <TrackContext.Provider value={{ currentTrack, setCurrentTrack}}>
+        <TrackContext.Provider value={{ currentTrack, setCurrentTrack, audioRef, isPlaying, setIsPlaying}}>
             {children}
         </TrackContext.Provider>
     )

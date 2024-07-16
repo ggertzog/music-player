@@ -1,20 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import { Song } from "@/entities/song";
 import data from '../model/mock-data';
 import headphones from '@/shared/assets/icons/headphones.svg'
 import { Track, useTrack } from "@/features/audio-player/utils/audioContext";
+import { useTrackControl } from "@/features/audio-player/utils/useTrackControl";
 
 export const SongsList = () => {
 
     const [playingId, setPlayingId] = useState<number | null>(null);
 
-    const {setCurrentTrack, currentTrack} = useTrack();
+    const {setCurrentTrack, audioRef} = useTrack();
 
-    const handlePlay = (id: number): void => {
-        setPlayingId(prevId => (prevId === id ? null : id));
-    }
-    
+    const { playTrack, pauseTrack } = useTrackControl({audioRef});
+    const { setIsPlaying } = useTrack()
+
+    const handlePlay = (id: number, track: Track): void => {
+        if (setCurrentTrack && audioRef?.current) {
+            setCurrentTrack(track);
+            setPlayingId(prevId => {
+                if (prevId === id) {
+                    pauseTrack();
+                    setIsPlaying(false);
+                    return null;
+                } else {
+                    setIsPlaying(true);
+                    return id;
+                }
+            });
+
+            audioRef.current.oncanplay = () => {
+                playTrack();
+            };
+        }
+    };
+
+    useEffect(() => {
+        if (audioRef?.current) {
+            audioRef.current.onended = () => {
+                setPlayingId(null);
+                setIsPlaying(false);
+            };
+        }
+    }, [audioRef, setIsPlaying]);
     
     return (
         <div className={styles['songs-list']}>
@@ -33,10 +61,7 @@ export const SongsList = () => {
                             image={item.image} 
                             song={item.song} 
                             duration={item.duration}
-                            onClick={() => {
-                                setCurrentTrack(item);
-                                handlePlay(item.id);
-                            }}
+                            onClick={() => handlePlay(item.id, item)}
                             isPlaying={playingId === item.id}
                         />
                     )  

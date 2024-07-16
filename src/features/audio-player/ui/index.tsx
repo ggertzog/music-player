@@ -1,56 +1,23 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import styles from './styles.module.scss';
 import ControlButton from '@/shared/ui/control-button';
 import data from '@/widgets/songs-list/model/mock-data';
 import OptionalInput from '@/shared/ui/optional-input';
 import OptionalButton from '@/shared/ui/optional-button';
-import volume from '@/shared/assets/icons/volume.svg';
+import volumeIcon from '@/shared/assets/icons/volume.svg';
 import { LikeButton } from '@/features/like-button';
 import { useTrack } from '../utils/audioContext';
+import { useVolumeControl } from '../utils/useVolumeControl';
+import { useTimelineControl } from '../utils/useTimelineControl';
+import { useTrackControl } from '../utils/useTrackControl';
 
 export const AudioPlayer = () => {
 
-  const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const {currentTrack, setCurrentTrack, audioRef} = useTrack();
 
-  const {currentTrack, setCurrentTrack} = useTrack();
-
-  const [currentTime, setCurrentTime] = useState<number>(0);
-  const [duration, setDuration] = useState<number>(0);
-
-  useEffect(() => {
-    if(currentTrack) {
-      audioRef.current?.load();
-      if(isPlaying) {
-        audioRef.current?.play();
-      }
-    }
-  }, [currentTrack, isPlaying])
-  
-  const play = () => {
-    setIsPlaying(true);
-    audioRef.current?.play();    
-  }
-
-  const pause = () => {
-    setIsPlaying(false);
-    audioRef.current?.pause();
-  }
-
-  const playNext = () => {
-    setCurrentTrackIndex((prevIndex) =>
-      prevIndex === data.length - 1 ? 0 : prevIndex + 1
-    );
-    setCurrentTrack(data[currentTrackIndex]);
-  };
-
-  const playPrev = () => {
-    setCurrentTrackIndex((prevIndex) =>
-      prevIndex === 0 ? data.length - 1 : prevIndex - 1
-    );
-    setCurrentTrack(data[currentTrackIndex]);
-  };
+  const {volume, handleVolumeChange} = useVolumeControl(audioRef);
+  const {currentTime, duration, handleSeek} = useTimelineControl(audioRef);
+  const {playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying} = useTrackControl({audioRef, data, setCurrentTrack});  
 
   return (
     <>
@@ -64,15 +31,15 @@ export const AudioPlayer = () => {
       <div className={styles['audio-player']}>
         <audio ref={audioRef} src={currentTrack?.audioSrc} />
         <ControlButton theme = 'rewind' />
-        <ControlButton theme = 'prev' onClick={playPrev} />
-        <ControlButton theme = {isPlaying ? 'pause' : 'play'} onClick={isPlaying ? pause : play} />
-        <ControlButton theme = 'next' onClick={playNext} />
+        <ControlButton theme = 'prev' onClick={playPrevTrack} />
+        <ControlButton theme = {isPlaying ? 'pause' : 'play'} onClick={isPlaying ? pauseTrack : playTrack} />
+        <ControlButton theme = 'next' onClick={playNextTrack} />
         <ControlButton theme = 'forward' />
       </div>
-      <OptionalInput type='l' />
+      <OptionalInput type='l' min={0} max={duration} value={currentTime} onChange={handleSeek} />
       <div className={styles['volume-box']}>
-        <img className={styles['volume-icon']} src={volume} alt="Громкость" />
-        <OptionalInput type='s' />
+        <img className={styles['volume-icon']} src={volumeIcon} alt="Громкость" />
+        <OptionalInput type='s' min={0} max={1} step={0.01} value={volume} onChange={handleVolumeChange} />
       </div>
       <div className={styles['optional-container']}>
           <OptionalButton theme = 'shuffle' />
