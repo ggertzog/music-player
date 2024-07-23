@@ -17,7 +17,12 @@ export const AudioPlayer = () => {
 
   const {volume, handleVolumeChange} = useVolumeControl(audioRef);
   const {currentTime, duration, handleSeek} = useTimelineControl(audioRef);
-  const {playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying} = useTrackControl({audioRef, data, setCurrentTrack});  
+  const {playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying} = useTrackControl({
+    audioRef, 
+    data, 
+    setCurrentTrack, 
+    currentTrack: currentTrack!,
+  });  
 
   return (
     <>

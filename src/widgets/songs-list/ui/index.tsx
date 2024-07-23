@@ -10,10 +10,16 @@ export const SongsList = () => {
 
     const [playingId, setPlayingId] = useState<number | null>(null);
 
-    const {setCurrentTrack, audioRef} = useTrack();
+    const { setCurrentTrack, audioRef, currentTrack } = useTrack();
 
-    const { playTrack, pauseTrack } = useTrackControl({audioRef});
-    const { setIsPlaying } = useTrack()
+    const { playTrack, pauseTrack } = useTrackControl({
+        audioRef,
+        data,
+        setCurrentTrack,
+        currentTrack: currentTrack!,
+    });
+
+    const { setIsPlaying } = useTrack();
 
     const handlePlay = (id: number, track: Track): void => {
         if (setCurrentTrack && audioRef?.current) {
