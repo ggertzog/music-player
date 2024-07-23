@@ -1,10 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styles from './styles.module.scss';
 import classNames from "classnames/bind";
 import active from '@/shared/assets/icons/active.svg';
 import play from '@/shared/assets/icons/play-song.svg';
 import pause from '@/shared/assets/icons/pause-song.svg';
-// import { Track } from "@/features/audio-player/utils/audioContext";
 
 interface ISong {
     id: number;
@@ -18,15 +17,13 @@ interface ISong {
     onClick?: () => void;
 }
 
-export const Song: FC<ISong> = ({ id, duration, image, artist, song, number, isPlaying, onClick}) => {
+export const Song: FC<ISong> = ({ duration, image, artist, song, number, isPlaying, onClick}) => {
 
-    // const[isPlay, setIsPlay] = useState(false);
 
     const togglePlay = () => {
         if(onClick) {
             onClick();
         }
-        // setIsPlay(prev => !prev);        
     }
 
     const cx = classNames.bind(styles);
