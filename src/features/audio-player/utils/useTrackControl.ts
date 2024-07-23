@@ -1,54 +1,48 @@
-import { RefObject, useCallback, useEffect, useState } from "react";
+import { RefObject, useCallback, useEffect } from "react";
 import { Track, useTrack } from "./audioContext";
 
 interface TrackControlParams {
-    audioRef?: RefObject<HTMLAudioElement>;
-    data?: Track[];
-    setCurrentTrack?: (track: Track) => void;
+    audioRef: RefObject<HTMLAudioElement>;
+    data: Track[];
+    setCurrentTrack: (track: Track) => void;
+    currentTrack: Track; // Добавлено для отслеживания текущего трека
 }
 
-export const useTrackControl = ({audioRef, data, setCurrentTrack} : TrackControlParams) => {
-
-    // currentTrackIndex не нужен
-    const [currentTrackIndex, setCurrentTrackIndex] = useState<number>(0);
-    const {isPlaying, setIsPlaying} = useTrack();
+export const useTrackControl = ({ audioRef, data, setCurrentTrack, currentTrack }: TrackControlParams) => {
+    const { isPlaying, setIsPlaying } = useTrack();
 
     const playTrack = useCallback(() => {
-        if (audioRef?.current) {
+        if (audioRef.current) {
             setIsPlaying(true);
             audioRef.current.play();
         }
-    }, [audioRef]);
+    }, [audioRef, setIsPlaying]);
 
     const pauseTrack = useCallback(() => {
-        if (audioRef?.current) {
+        if (audioRef.current) {
             setIsPlaying(false);
             audioRef.current.pause();
         }
-    }, [audioRef]);
+    }, [audioRef, setIsPlaying]);
 
     const playNextTrack = useCallback(() => {
-        if (data && setCurrentTrack) {
-            setCurrentTrackIndex((prevIndex) => {
-                const newIndex = prevIndex === data.length - 1 ? 0 : prevIndex + 1;
-                setCurrentTrack(data[newIndex]);
-                return newIndex;
-            });
+        if (data.length) {
+            const currentIndex = data.findIndex(track => track.id === currentTrack.id);
+            const newIndex = currentIndex === data.length - 1 ? 0 : currentIndex + 1;
+            setCurrentTrack(data[newIndex]);
         }
-    }, [data, setCurrentTrack]);
+    }, [data, setCurrentTrack, currentTrack]);
 
     const playPrevTrack = useCallback(() => {
-        if (data && setCurrentTrack) {
-            setCurrentTrackIndex((prevIndex) => {
-                const newIndex = prevIndex === 0 ? data.length - 1 : prevIndex - 1;
-                setCurrentTrack(data[newIndex]);
-                return newIndex;
-            });
+        if (data.length) {
+            const currentIndex = data.findIndex(track => track.id === currentTrack.id);
+            const newIndex = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
+            setCurrentTrack(data[newIndex]);
         }
-    }, [data, setCurrentTrack]);
+    }, [data, setCurrentTrack, currentTrack]);
 
     useEffect(() => {
-        if (audioRef?.current) {
+        if (audioRef.current) {
             if (isPlaying) {
                 audioRef.current.play();
             } else {
@@ -57,5 +51,5 @@ export const useTrackControl = ({audioRef, data, setCurrentTrack} : TrackControl
         }
     }, [isPlaying, audioRef]);
 
-    return {playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying, setIsPlaying}
-}
+    return { playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying, setIsPlaying };
+};
