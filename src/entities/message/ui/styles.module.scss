@@ -1,0 +1,80 @@
+@import '@/index';
+
+@mixin user-message {
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+@mixin owner-message {
+    border-top-right-radius: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    gap: 15px;
+
+    &_type_owner {
+        flex-direction: row-reverse;
+    }
+}
+
+.avatar {
+    width: 53px;
+    height: 53px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 2px solid #a00689;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.disc {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.name {
+    font-family: $font-stack;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.date {
+    margin-bottom: 3px;
+    font-family: $font-stack;
+    color: #fff;
+    font-size: 10px;
+    align-self: flex-end;
+}
+
+.message-box {
+    padding: 8px 17px;
+    max-width: 305px;
+    background-color: #1D1D1D;
+    @include user-message;
+
+    &_type_owner {
+        @include owner-message;
+    }
+}
+
+.message-text {
+    font-family: $font-stack;
+    font-size: 16px;
+    color: #fff;
+    line-height: 24px;
+}

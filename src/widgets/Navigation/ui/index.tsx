@@ -12,11 +12,11 @@ export const Navigation = () => {
                     <p className={styles.title}>Menu</p>
                 </div>
                 <div className={styles.menu}>
-                    <NavLink theme='profile' text='Profile' />
-                    <NavLink theme='dash' text='Dashboard' />
-                    <NavLink theme='favorite' text='Favorite' />
-                    <NavLink theme='chat' text='Chat' />
-                    <NavLink theme='friends' text='Friends' />
+                    <NavLink link='' theme='profile' text='Profile' />
+                    <NavLink link='/' theme='dash' text='Dashboard' />
+                    <NavLink link='' theme='favorite' text='Favorite' />
+                    <NavLink link='/chat' theme='chat' text='Chat' />
+                    <NavLink link='' theme='friends' text='Friends' />
                 </div>
             </nav>
         </div>

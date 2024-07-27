@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles.module.scss';
 import dash from '@/shared/assets/icons/menu.svg';
 import profile from '@/shared/assets/icons/user.svg';
@@ -8,10 +9,11 @@ import friends from '@/shared/assets/icons/friends.svg';
 
 interface ILink {
   readonly theme: 'dash' | 'profile' | 'favorite' | 'chat' | 'friends';
-  readonly text: string
+  readonly text: string;
+  readonly link: string;
 }
 
-const NavLink: FC<ILink> = ({theme, text}) => {
+const NavLink: FC<ILink> = ({theme, text, link}) => {
 
   let image;
   switch(theme) {
@@ -35,7 +37,7 @@ const NavLink: FC<ILink> = ({theme, text}) => {
   }
 
   return (
-    <a className={styles.link} href='#'><img className={styles.image} src={image} alt={theme} />{text}</a>
+    <Link className={styles.link} to={link}><img className={styles.image} src={image} alt={theme} />{text}</Link>
   )
 }
 

@@ -5,6 +5,8 @@ $font-stack: 'Inter', sans-serif;
 /* normalization */
 * {
     box-sizing: border-box;
+    // scrollbar-width: thin;
+    // scrollbar-color: rgba(172,21,161,1) #111111;
 }
 
 body {
@@ -12,7 +14,10 @@ body {
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
 }
+
+
 
 ol,
 ul {
