@@ -2,54 +2,52 @@ import React, { useEffect, useState } from "react";
 import styles from './styles.module.scss';
 import { Song } from "@/entities/song";
 import data from '../model/mock-data';
-import headphones from '@/shared/assets/icons/headphones.svg'
-import { Track, useTrack } from "@/features/audio-player/utils/audioContext";
+import headphones from '@/shared/assets/icons/headphones.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentTrack, setIsPlaying, Track } from '@/features/audio-player/model/songSlice';
 import { useTrackControl } from "@/features/audio-player/utils/useTrackControl";
+import { RootState } from "@/app/store";
 
-export const SongsList = () => {
+interface SongListParams {
+    audioRef: React.RefObject<HTMLAudioElement>;
+}
 
-    const [playingId, setPlayingId] = useState<number | null>(null);
+export const SongsList: React.FC<SongListParams> = ({audioRef}) => {
+    const dispatch = useDispatch();
+    const currentTrack = useSelector((state: RootState) => state.song.currentTrack);
+    const isPlaying = useSelector((state: RootState) => state.song.isPlaying);
+    const { playTrack, pauseTrack } = useTrackControl({audioRef, data, currentTrack: currentTrack!});
 
-    const { setCurrentTrack, audioRef, currentTrack } = useTrack();
 
-    const { playTrack, pauseTrack } = useTrackControl({
-        audioRef,
-        data,
-        setCurrentTrack,
-        currentTrack: currentTrack!,
-    });
-
-    const { setIsPlaying } = useTrack();
-
-    const handlePlay = (id: number, track: Track): void => {
-        if (setCurrentTrack && audioRef?.current) {
-            setCurrentTrack(track);
-            setPlayingId(prevId => {
-                if (prevId === id) {
+    const handlePlay = (id: number, track: Track) => {
+        if (audioRef.current) {
+            if (currentTrack?.id === id) {
+                if (isPlaying) {
                     pauseTrack();
-                    setIsPlaying(false);
-                    return null;
+                    dispatch(setIsPlaying(false));
                 } else {
-                    setIsPlaying(true);
-                    return id;
+                    playTrack();
+                    dispatch(setIsPlaying(true));
                 }
-            });
-
-            audioRef.current.oncanplay = () => {
-                playTrack();
-            };
+            } else {
+                dispatch(setCurrentTrack(track));
+                dispatch(setIsPlaying(true));
+                audioRef.current.src = track.audioSrc;
+                audioRef.current.oncanplay = () => {
+                    playTrack();
+                };
+            }
         }
-    };
+    }
 
     useEffect(() => {
-        if (audioRef?.current) {
+        if (audioRef.current) {
             audioRef.current.onended = () => {
-                setPlayingId(null);
-                setIsPlaying(false);
+                dispatch(setIsPlaying(false));
             };
         }
-    }, [audioRef, setIsPlaying]);
-    
+    }, [audioRef, dispatch]);
+
     return (
         <div className={styles['songs-list']}>
             <div className={styles.container}>
@@ -57,22 +55,21 @@ export const SongsList = () => {
                 <h2 className={styles.title}>Top Music</h2>
             </div>
             <div className={styles.box}>
-                {data.map((item) => {                    
-                    return (
-                        <Song 
-                            key={item.id}
-                            id={item.id}
-                            number={item.id} 
-                            artist={item.artist} 
-                            image={item.image} 
-                            song={item.song} 
-                            duration={item.duration}
-                            onClick={() => handlePlay(item.id, item)}
-                            isPlaying={playingId === item.id}
-                        />
-                    )  
-                })}
+                {data.map((item) => (
+                    <Song 
+                        key={item.id}
+                        id={item.id}
+                        number={item.id} 
+                        artist={item.artist} 
+                        image={item.image} 
+                        song={item.song} 
+                        duration={item.duration}
+                        onClick={() => handlePlay(item.id, item)}
+                        isPlaying={currentTrack?.id === item.id && isPlaying}
+                    />
+                ))}
             </div>
+            <audio ref={audioRef} />
         </div>
-    )
-}
+    );
+};

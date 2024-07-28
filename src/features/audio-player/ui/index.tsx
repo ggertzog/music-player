@@ -6,23 +6,29 @@ import OptionalInput from '@/shared/ui/optional-input';
 import OptionalButton from '@/shared/ui/optional-button';
 import volumeIcon from '@/shared/assets/icons/volume.svg';
 import { LikeButton } from '@/features/like-button';
-import { useTrack } from '../utils/audioContext';
 import { useVolumeControl } from '../utils/useVolumeControl';
 import { useTimelineControl } from '../utils/useTimelineControl';
 import { useTrackControl } from '../utils/useTrackControl';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { setCurrentTrack } from '../model/songSlice';
 
-export const AudioPlayer = () => {
+interface AudioPlayerParams {
+  audioRef: React.RefObject<HTMLAudioElement>;
+}
 
-  const {currentTrack, setCurrentTrack, audioRef} = useTrack();
+export const AudioPlayer: React.FC<AudioPlayerParams> = ({audioRef}) => {
+
+  const currentTrack = useSelector((state: RootState) => state.song.currentTrack);
+  const isPlaying = useSelector((state: RootState) => state.song.isPlaying);
 
   const {volume, handleVolumeChange} = useVolumeControl(audioRef);
   const {currentTime, duration, handleSeek} = useTimelineControl(audioRef);
-  const {playTrack, pauseTrack, playNextTrack, playPrevTrack, isPlaying} = useTrackControl({
+  const {playTrack, pauseTrack, playNextTrack, playPrevTrack} = useTrackControl({
     audioRef, 
     data, 
-    setCurrentTrack, 
     currentTrack: currentTrack!,
-  });  
+  });
 
   return (
     <>

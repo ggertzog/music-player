@@ -5,10 +5,14 @@ import styles from './styles.module.scss';
 // import OptionalInput from '@/shared/ui/optional-input';
 import { AudioPlayer } from '@/features/audio-player';
 
-export const Player = () => {
+interface PlayerParams {
+    audioRef: React.RefObject<HTMLAudioElement>;
+}
+
+export const Player: React.FC<PlayerParams> = ({audioRef}) => {
     return (
         <div className={styles.player}>
-            <AudioPlayer />
+            <AudioPlayer audioRef={audioRef} />
         </div>
     )
 }

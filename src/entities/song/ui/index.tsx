@@ -4,6 +4,7 @@ import classNames from "classnames/bind";
 import active from '@/shared/assets/icons/active.svg';
 import play from '@/shared/assets/icons/play-song.svg';
 import pause from '@/shared/assets/icons/pause-song.svg';
+import { log } from "console";
 
 interface ISong {
     id: number;

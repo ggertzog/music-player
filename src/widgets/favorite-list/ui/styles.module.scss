@@ -1,0 +1,22 @@
+.favorite-list {
+    padding: 30px 30px;
+    grid-area: favorite;
+    background-color: #111111;
+}
+
+.disc {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.icon {
+    height: 26px;
+}

@@ -25,7 +25,6 @@ export const DiscoverGenre = () => {
                     slidesPerView={3}
                     navigation
                     scrollbar={{ draggable: true }}
-                    // pagination={{ clickable: true }}
                     mousewheel={true}
                 >
                     {data.map((item) => (

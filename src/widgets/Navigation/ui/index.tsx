@@ -14,7 +14,7 @@ export const Navigation = () => {
                 <div className={styles.menu}>
                     <NavLink link='' theme='profile' text='Profile' />
                     <NavLink link='/' theme='dash' text='Dashboard' />
-                    <NavLink link='' theme='favorite' text='Favorite' />
+                    <NavLink link='/favorite' theme='favorite' text='Favorite' />
                     <NavLink link='/chat' theme='chat' text='Chat' />
                     <NavLink link='' theme='friends' text='Friends' />
                 </div>

@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
 import dots from '@/shared/assets/icons/dots.svg';
 import { Message } from '@/entities/message';
 import { MessagePanel } from '@/entities/message-panel/ui';
 import useChat from '@/features/chat-hook';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/app/store';
+import { setNewMessage } from '@/features/chat-hook/model/slice';
 
 export const Chat: React.FC = () => {
 
-    const { chat, setChat, handleSendMessage } = useChat();
+    const { chat, handleSendMessage } = useChat();
+    const messages = useSelector((state: RootState) => state.chat.messages);
+    const messageListRef = useRef<HTMLDivElement>(null);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        if(messageListRef.current) {
+            messageListRef.current.scrollTop = messageListRef.current.scrollHeight;
+        }
+    }, [chat.messages])
 
     return (
         <div className={styles.chat}>
@@ -24,8 +36,8 @@ export const Chat: React.FC = () => {
                     <img className={styles.avatar} src="https://lastfm.freetls.fastly.net/i/u/ar0/a68a28bd28e75be45074d07d26cb356a.jpg" alt="" />
                 </div>
             </div>
-            <div className={styles['message-list']}>
-                {chat.messages.map((item) => (
+            <div className={styles['message-list']} ref={messageListRef}>
+                {messages.map((item) => (
                     <Message 
                         key={item.id}
                         id={item.id}
@@ -39,9 +51,7 @@ export const Chat: React.FC = () => {
             </div>
             <MessagePanel 
                 chatState={chat}
-                onNewMessageChange = {(newMessage) => {
-                    setChat((prevChat) => ({ ...prevChat, newMessage}))
-                }}
+                onNewMessageChange = {(newMessage) => dispatch(setNewMessage(newMessage))}
                 onSendMessage={(message) => handleSendMessage(message)}
             />
         </div>

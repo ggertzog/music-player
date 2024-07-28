@@ -4,11 +4,15 @@ import { Navigation } from '@/widgets/navigation';
 import { Content } from '@/widgets/content';
 import { PersonalList } from '@/widgets/personal-list';
 
-export const Dashboard = () => {
+interface DashboardParams {
+    audioRef: React.RefObject<HTMLAudioElement>;
+}
+
+export const Dashboard: React.FC<DashboardParams> = ({audioRef}) => {
     return (
         <div className={styles.dashboard}>
             <Navigation />
-            <Content />
+            <Content audioRef={audioRef} />
             <PersonalList />
         </div>
     )

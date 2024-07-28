@@ -1,0 +1,6 @@
+.favorite-page {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 275px auto 348px;
+    grid-template-areas: "menu favorite personal";
+}
