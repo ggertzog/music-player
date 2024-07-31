@@ -1,16 +1,11 @@
-import React, { ChangeEvent, FC } from 'react';
+import React, { FC } from 'react';
 import styles from './styles.module.scss';
 import classNames from 'classnames/bind';
 
 const cn = classNames.bind(styles);
 
-interface InputDurationParams {
+interface InputDurationParams extends React.InputHTMLAttributes<HTMLInputElement> {
     readonly type: 's' | 'l';
-    min: number;
-    max: number;
-    value: number;
-    step?: number;
-    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const OptionalInput: FC<InputDurationParams> = ({type, min, max, value, step, onChange}) => {

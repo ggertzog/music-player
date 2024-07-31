@@ -8,7 +8,7 @@ import chat from '@/shared/assets/icons/chat.svg';
 import friends from '@/shared/assets/icons/friends.svg';
 
 interface ILink {
-  readonly theme: 'dash' | 'profile' | 'favorite' | 'chat' | 'friends';
+  readonly theme: string;
   readonly text: string;
   readonly link: string;
 }

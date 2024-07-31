@@ -4,7 +4,6 @@ import classNames from "classnames/bind";
 import active from '@/shared/assets/icons/active.svg';
 import play from '@/shared/assets/icons/play-song.svg';
 import pause from '@/shared/assets/icons/pause-song.svg';
-import { log } from "console";
 
 interface ISong {
     id: number;
@@ -14,18 +13,10 @@ interface ISong {
     song: string;
     number: number;
     isPlaying: boolean;
-    // onPlay: (id: number, item: Track) => void;
     onClick?: () => void;
 }
 
 export const Song: FC<ISong> = ({ duration, image, artist, song, number, isPlaying, onClick}) => {
-
-
-    const togglePlay = () => {
-        if(onClick) {
-            onClick();
-        }
-    }
 
     const cx = classNames.bind(styles);
 
@@ -38,7 +29,7 @@ export const Song: FC<ISong> = ({ duration, image, artist, song, number, isPlayi
             </div>
             <span className={cx('duration', {'duration_type_active' : isPlaying})}>{duration}</span>
             {isPlaying && <img className={styles.icon} src={active} alt="active" />}
-            <button className={styles.button} onClick={togglePlay}>
+            <button className={styles.button} onClick={onClick}>
                 <img className={styles.image} src={isPlaying ? pause : play} alt='play' />
             </button>
         </div>

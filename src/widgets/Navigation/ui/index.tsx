@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './styles.module.scss';
-import NavLink from '@/shared/ui/nav-link';
 import logo from '@/shared/assets/icons/logo.svg';
+import { LinksList } from './links-list';
+import NavData from '../model/nav-data';
 
 export const Navigation = () => {
     return (
@@ -11,13 +12,7 @@ export const Navigation = () => {
                 <div className={styles['border-gradient']}>
                     <p className={styles.title}>Menu</p>
                 </div>
-                <div className={styles.menu}>
-                    <NavLink link='' theme='profile' text='Profile' />
-                    <NavLink link='/' theme='dash' text='Dashboard' />
-                    <NavLink link='/favorite' theme='favorite' text='Favorite' />
-                    <NavLink link='/chat' theme='chat' text='Chat' />
-                    <NavLink link='' theme='friends' text='Friends' />
-                </div>
+                <LinksList data={NavData} />
             </nav>
         </div>
     )

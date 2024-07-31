@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import ControlButton from '@/shared/ui/control-button';
-import data from '@/widgets/songs-list/model/mock-data';
+import data from '@/widgets/songs-widget/model/mock-data';
 import OptionalInput from '@/shared/ui/optional-input';
 import OptionalButton from '@/shared/ui/optional-button';
 import volumeIcon from '@/shared/assets/icons/volume.svg';
@@ -11,7 +11,6 @@ import { useTimelineControl } from '../utils/useTimelineControl';
 import { useTrackControl } from '../utils/useTrackControl';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
-import { setCurrentTrack } from '../model/songSlice';
 
 interface AudioPlayerParams {
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -41,6 +40,7 @@ export const AudioPlayer: React.FC<AudioPlayerParams> = ({audioRef}) => {
       </div>
       <div className={styles['audio-player']}>
         <audio ref={audioRef} src={currentTrack?.audioSrc} />
+        {/* Подумать над тем чтобы вынести эти кнопки в список по которому проходится map */}
         <ControlButton theme = 'rewind' />
         <ControlButton theme = 'prev' onClick={playPrevTrack} />
         <ControlButton theme = {isPlaying ? 'pause' : 'play'} onClick={isPlaying ? pauseTrack : playTrack} />

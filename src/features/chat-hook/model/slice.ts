@@ -19,6 +19,7 @@ const initialState: ChatState = {
     newMessage: '',
 }
 
+// узнать почему при переходе между страницами очищается стор
 const chatSlice = createSlice({
     name: 'chat',
     initialState,

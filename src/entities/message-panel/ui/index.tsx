@@ -28,6 +28,12 @@ export const MessagePanel: React.FC<MessagePanelParams> = ({chatState, onNewMess
     }
   };
 
+  const handleSendMessage = () => {
+    if (chatState.newMessage.trim() !== '') {
+      onSendMessage(chatState.newMessage);
+    }
+  }
+
   return (
     <div className={styles['message-panel']}>
       <input 
@@ -47,11 +53,7 @@ export const MessagePanel: React.FC<MessagePanelParams> = ({chatState, onNewMess
         </button>
         <button 
           className={styles.button}
-          onClick={() => {
-            if (chatState.newMessage.trim() !== '') {
-                onSendMessage(chatState.newMessage);
-            }
-          }}
+          onClick={handleSendMessage}
         >
           <img className={styles.icon} src={send} alt="Отправить" />
         </button>

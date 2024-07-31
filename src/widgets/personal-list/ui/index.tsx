@@ -1,39 +1,22 @@
-import React from "react";
+import React from 'react';
 import styles from './styles.module.scss';
-import { User } from "@/entities/user";
-import { Artist } from "@/entities/artist";
+import { User } from '@/entities/user';
 import data from '../model/artist-data';
-import songs from "../model/songs-data";
-import { RecentlySong } from "@/entities/recently-song";
+import songs from '../model/songs-data';
+import { ArtistList } from './artists-list';
+import { SongsList } from './songs-list';
 
 export const PersonalList = () => {
     return (
         <div className={styles.container}>
             <User />
             <div className={styles.box}>
-                <h2 className={styles.title}>Top Artist</h2>
-                <div className={styles.artists}>
-                    {data.map((item) => {
-                        return (
-                            <Artist 
-                                key={item.id}
-                                name={item.name}
-                                avatar={item.avatar}
-                                album={item.albums}
-                            />
-                        )
-                    })}
-                </div>
+                <h2 className={styles.title}>Top Artists</h2>
+                <ArtistList data={data} />
             </div>
             <div className={styles.box}>
                 <h2 className={styles.title}>Recently Played</h2>
-                <div className={styles.songs}>
-                    {songs.map((item) => {
-                        return (
-                            <RecentlySong key={item.id} image={item.image} title={item.title} counter={item.counter} />
-                        )
-                    })}
-                </div>
+                <SongsList songs={songs} />
             </div>
         </div>
     )

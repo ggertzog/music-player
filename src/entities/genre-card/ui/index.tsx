@@ -2,13 +2,13 @@ import React, { FC } from "react";
 import styles from './styles.module.scss';
 import play from '@/shared/assets/icons/play-card.svg';
 
-interface ICard {
+interface IGenreCard {
     title: string,
     image: string,
     length: number,
 }
 
-export const Card: FC<ICard> = ({title, image, length}) => {
+export const GenreCard: FC<IGenreCard> = ({title, image, length}) => {
     return (
         <div className={styles.card}>
             <a className={styles.link} href="#">

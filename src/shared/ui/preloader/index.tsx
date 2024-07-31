@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import styles from './styles.module.scss';
 import gsap from 'gsap';
 
-
-
 const Preloader: React.FC = () => {
 
     const el1 = useRef<HTMLDivElement>(null);

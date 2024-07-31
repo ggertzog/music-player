@@ -4,35 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setMessages, addMessage, setNewMessage } from './model/slice';
 import { RootState } from '@/app/store';
 
-// interface Message {
-//     id: number; 
-//     name: string; 
-//     avatar: string; 
-//     date: string; 
-//     message: string;
-//     isCurrentUser: boolean | undefined;
-// }
-
-// interface ChatState {
-//     messages: Message[];
-//     newMessage: string;
-// }
-
 const useChat = () => {
 
     const dispatch = useDispatch();
     const chat = useSelector((state: RootState) => state.chat)
 
-    // const [chat, setChat] = useState<ChatState>({
-    //     messages: [],
-    //     newMessage: '',
-    // });
-
     useEffect(() => {
-        // setChat({
-        //     messages: data,
-        //     newMessage: '',
-        // });
         dispatch(setMessages(data))
     }, [dispatch]);
 
@@ -56,10 +33,6 @@ const useChat = () => {
 
         dispatch(addMessage(newMessage));
         dispatch(setNewMessage(''));
-        // setChat((prevChat) => ({
-        //     messages: [...prevChat.messages, newMessage],
-        //     newMessage: '',
-        // }))
     }
 
     return {

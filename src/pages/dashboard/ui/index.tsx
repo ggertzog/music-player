@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.module.scss';
 import { Navigation } from '@/widgets/navigation';
-import { Content } from '@/widgets/content';
+import { Content } from '@/pages/dashboard/ui/content';
 import { PersonalList } from '@/widgets/personal-list';
 
 interface DashboardParams {

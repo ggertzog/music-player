@@ -1,14 +1,8 @@
 import React from "react";
 import styles from './styles.module.scss';
-import { Card } from "@/entities/card";
 import note from '@/shared/assets/icons/note.svg';
 import data from '../model/mock-data';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/scss';
-import 'swiper/scss/navigation';
-import 'swiper/scss/pagination';
-import { Navigation, Mousewheel } from 'swiper/modules';
+import { CardList } from "./card-list";
 
 export const DiscoverGenre = () => {
 
@@ -19,20 +13,7 @@ export const DiscoverGenre = () => {
                 <h2 className={styles.title}>Discover Genre</h2>
             </div>
             <div className={styles.container}>
-                <Swiper
-                    modules={[Navigation, Mousewheel]}
-                    spaceBetween={20}
-                    slidesPerView={3}
-                    navigation
-                    scrollbar={{ draggable: true }}
-                    mousewheel={true}
-                >
-                    {data.map((item) => (
-                        <SwiperSlide key={item.id}>
-                            <Card title={item.title} image={item.image} length={item.length} />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
+                <CardList data={data}/>
             </div>
         </div>
     )

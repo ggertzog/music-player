@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from './styles.module.scss';
-import { Song } from "@/entities/song";
 import data from '../model/mock-data';
 import headphones from '@/shared/assets/icons/headphones.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTrack, setIsPlaying, Track } from '@/features/audio-player/model/songSlice';
 import { useTrackControl } from "@/features/audio-player/utils/useTrackControl";
 import { RootState } from "@/app/store";
+import { SongsList } from "./songs-list";
 
 interface SongListParams {
     audioRef: React.RefObject<HTMLAudioElement>;
 }
 
-export const SongsList: React.FC<SongListParams> = ({audioRef}) => {
+export const SongsWidget: React.FC<SongListParams> = ({audioRef}) => {
     const dispatch = useDispatch();
     const currentTrack = useSelector((state: RootState) => state.song.currentTrack);
     const isPlaying = useSelector((state: RootState) => state.song.isPlaying);
@@ -40,6 +40,7 @@ export const SongsList: React.FC<SongListParams> = ({audioRef}) => {
         }
     }
 
+    // Добавить логику включения следующей песни
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.onended = () => {
@@ -54,7 +55,7 @@ export const SongsList: React.FC<SongListParams> = ({audioRef}) => {
                 <img className={styles.image} src={headphones} alt="Icon" />
                 <h2 className={styles.title}>Top Music</h2>
             </div>
-            <div className={styles.box}>
+            {/* <div className={styles.box}>
                 {data.map((item) => (
                     <Song 
                         key={item.id}
@@ -68,7 +69,8 @@ export const SongsList: React.FC<SongListParams> = ({audioRef}) => {
                         isPlaying={currentTrack?.id === item.id && isPlaying}
                     />
                 ))}
-            </div>
+            </div> */}
+            <SongsList data={data} handlePlay={handlePlay} currentTrack={currentTrack} isPlaying={isPlaying} />
             <audio ref={audioRef} />
         </div>
     );
