@@ -21,7 +21,7 @@ export const Song: FC<ISong> = ({ duration, image, artist, song, number, isPlayi
     const cx = classNames.bind(styles);
 
     return (
-        <div className={styles.song}>
+        <div className={styles.song} onClick={onClick}>
             <div className={styles['song-box']}>
                 <span className={cx('number', {'number_type_active' : isPlaying})}>{`0${number}`}</span>
                 <img className={cx('artist', {'artist_type_active' : isPlaying})} src={image} alt="Artist" />
@@ -29,7 +29,7 @@ export const Song: FC<ISong> = ({ duration, image, artist, song, number, isPlayi
             </div>
             <span className={cx('duration', {'duration_type_active' : isPlaying})}>{duration}</span>
             {isPlaying && <img className={styles.icon} src={active} alt="active" />}
-            <button className={styles.button} onClick={onClick}>
+            <button className={styles.button} >
                 <img className={styles.image} src={isPlaying ? pause : play} alt='play' />
             </button>
         </div>
