@@ -24,8 +24,8 @@ const useChat = () => {
 
         const newMessage = {
             id: Date.now(), 
-            name: 'Володя', 
-            avatar: 'https://img.razrisyika.ru/kart/35/1200/137476-putin-1.jpg', 
+            name: 'Илон', 
+            avatar: 'https://autopeople.ru/article/wp-content/uploads/2020/12/ilon-mask-scaled.jpg', 
             date: getCurrentTime(), 
             message: message,
             isCurrentUser: true,

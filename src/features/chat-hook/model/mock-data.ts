@@ -20,7 +20,7 @@ const data = [
         name: 'Ольга',
         avatar: 'https://baldezh.top/uploads/posts/2024-01/thumbs/1705062354_baldezh-top-p-olga-dibtseva-pinterest-7.jpg',
         date: 'Сегодня в 8:23',
-        message: 'У аппарата Ольга, как прошел ваш день ?',
+        message: 'С вами Ольга, как прошел ваш день ?',
         isCurrentUser: false,
     },
     {
@@ -28,7 +28,7 @@ const data = [
         name: 'Владосик',
         avatar: 'https://mtdata.ru/u24/photoFB8E/20317041607-0/original.jpg',
         date: 'Сегодня в 8:41',
-        message: 'Го в моблу ?',
+        message: 'У меня все отлично, а чем вы поделитесь ?',
         isCurrentUser: false,
     },
 ]
