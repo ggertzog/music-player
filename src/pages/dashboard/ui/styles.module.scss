@@ -1,6 +1,22 @@
 .dashboard {
-    width: 100vw;
+    width: 100%;
     display: grid;
-    grid-template-columns: 275px auto 348px;
+    grid-template-columns: 275px 1fr 348px;
+    // grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas: "menu content personal";
+    background-color: #111111;
+}
+
+@media screen and (max-width: 1440px) {
+    .dashboard {
+        grid-template-columns: 275px auto;
+        grid-template-areas: "menu content";
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .dashboard {
+        grid-template-columns: auto;
+        grid-template-areas: "content";
+    }
 }

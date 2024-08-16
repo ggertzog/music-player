@@ -10,23 +10,23 @@ import { RootState } from './store';
 import { Player } from '@/widgets/player';
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+  // const [loading, setLoading] = useState(true);
+  // const navigate = useNavigate();
   const currentTrack = useSelector((state: RootState) => state.song.currentTrack);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-      navigate('/'); // Переход на главную страницу после завершения загрузки
-    }, 9000); // Имитация времени загрузки
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //     navigate('/'); // Переход на главную страницу после завершения загрузки
+  //   }, 9000); // Имитация времени загрузки
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (loading) {
-    return <Preloader />;
-  }
+  // if (loading) {
+  //   return <Preloader />;
+  // }
 
   return (
     <div className={styles.app}>

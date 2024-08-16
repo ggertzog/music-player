@@ -19,7 +19,6 @@ export const SongsList: React.FC<SongsList> = ({data, handlePlay, currentTrack, 
             <Song 
               key={id}
               id={id}
-              number={id} 
               artist={artist} 
               image={image} 
               song={song} 

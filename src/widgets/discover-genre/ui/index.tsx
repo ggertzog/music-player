@@ -7,7 +7,7 @@ import { CardList } from "./card-list";
 export const DiscoverGenre = () => {
 
     return (
-        <div className={styles['list']}>
+        <div className={styles['discover-genre']}>
             <div className={styles.description}>
                 <img className={styles.image} src={note} alt="Нота"/>
                 <h2 className={styles.title}>Discover Genre</h2>

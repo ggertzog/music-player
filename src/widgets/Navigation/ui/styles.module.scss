@@ -1,6 +1,6 @@
 .navigation {
     grid-area: menu;
-    padding: 0 31px;
+    padding: 0 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,16 +13,15 @@
 
 .logo {
     margin-top: 30px;
-    margin-bottom: 64px;
+    margin-bottom: 32px;
 }
 
 .container {
+    margin-top: 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-
 
 .border-gradient {
     border-bottom: 1px solid transparent;
@@ -38,4 +37,18 @@
     font-size: 20px;
     font-weight: 500;
     display: flex;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
 }

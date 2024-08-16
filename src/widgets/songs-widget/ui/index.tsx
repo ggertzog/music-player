@@ -55,21 +55,6 @@ export const SongsWidget: React.FC<SongListParams> = ({audioRef}) => {
                 <img className={styles.image} src={headphones} alt="Icon" />
                 <h2 className={styles.title}>Top Music</h2>
             </div>
-            {/* <div className={styles.box}>
-                {data.map((item) => (
-                    <Song 
-                        key={item.id}
-                        id={item.id}
-                        number={item.id} 
-                        artist={item.artist} 
-                        image={item.image} 
-                        song={item.song} 
-                        duration={item.duration}
-                        onClick={() => handlePlay(item.id, item)}
-                        isPlaying={currentTrack?.id === item.id && isPlaying}
-                    />
-                ))}
-            </div> */}
             <SongsList data={data} handlePlay={handlePlay} currentTrack={currentTrack} isPlaying={isPlaying} />
             <audio ref={audioRef} />
         </div>

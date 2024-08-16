@@ -59,3 +59,15 @@
     object-fit: cover;
     object-position: center;
 }
+
+@media screen and (max-width: 1440px) {
+    .artist {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    .artist {
+        width: 100%;
+    }
+}

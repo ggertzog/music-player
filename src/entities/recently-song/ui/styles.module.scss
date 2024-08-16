@@ -55,3 +55,15 @@
     object-fit: cover;
     object-position: center;
 }
+
+@media screen and (max-width: 1440px) {
+    .recently-song {
+        width: 360px;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    .recently-song {
+        width: 100%;
+    }
+}

@@ -1,7 +1,8 @@
 .song {
     margin: 0;
     padding: 10px 16px;
-    width: 762px;
+    // width: 762px;
+    width: 100%;
     display: flex;
     background-color: #1D1D1D;
     align-items: center;
@@ -55,7 +56,8 @@
     margin: 0;
     padding: 0;
     color: #B8B8B8;
-    font-size: 16px;
+    // font-size: 16px;
+    font-size: clamp(12px, 1.5vw, 16px);
     font-weight: 400;
     letter-spacing: 1.5px;
     max-width: 200px;
@@ -106,4 +108,19 @@
     padding: 0;
     width: 26px;
     height: 26px;
+}
+
+@media screen and (max-width: 860px) {
+    .song-box {
+        gap: 20px;
+    }
+
+    .description {
+        max-width: 152px;
+    }
+
+    .icon {
+        width: 15px;
+        height: 18px;
+    }
 }

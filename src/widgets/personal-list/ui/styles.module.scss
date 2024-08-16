@@ -1,4 +1,4 @@
-.container {
+.personal-list {
     grid-area: personal;
     height: 100%;
     padding: 40px 32px;
@@ -20,11 +20,71 @@
     margin-top: 47px;
 }
 
-.title {
+.subtitle {
     color: #B8B8B8;
     font-size: 20px;
     font-weight: 600;
 }
 
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
+@media screen and (max-width: 1440px) {
+    .personal-list {
+        margin-top: 40px;
+        padding: 0;
+        max-width: 1024px;
+        overflow-y: visible;
+        box-shadow: none;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+    }
 
+    .description {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .image {
+        height: 26px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .box {
+        margin: 0;
+    }    
+}
+
+@media screen and (max-width: 1440px) {
+    .personal-list {
+        width: 100%;
+        padding: 0;
+    }
+
+    .container {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1075px) {
+    .container {
+        flex-direction: column;
+        gap: 35px;
+    }
+}

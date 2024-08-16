@@ -1,7 +1,7 @@
-.list {
+.discover-genre {
+    margin-top: 40px;
     display: flex;
     flex-direction: column;
-    margin-top: 40px;
 }
 
 .description {
@@ -28,7 +28,14 @@
     align-items: center;
 }
 
+@media screen and (max-width: 1075px) {
+    .container {
+        width: 520px;
+    }
+}
 
-.card-list {
-    display: flex;
+@media screen and (max-width: 860px) {
+    .container {
+        width: 100%;
+    }
 }

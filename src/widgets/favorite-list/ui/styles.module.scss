@@ -2,6 +2,8 @@
     padding: 30px 30px;
     grid-area: favorite;
     background-color: #111111;
+    display: flex;
+    flex-direction: column;
 }
 
 .disc {
@@ -19,4 +21,12 @@
 
 .icon {
     height: 26px;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

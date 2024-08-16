@@ -1,10 +1,12 @@
 import React from 'react';
 import { GenreCard } from '@/entities/genre-card';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import './style.scss'
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import { Navigation, Mousewheel } from 'swiper/modules';
+import useResize from '@/features/resize';
 
 interface CardParams {
     id: number,
@@ -18,12 +20,15 @@ interface CardListParams {
     data: CardParams[];
 }
 export const CardList: React.FC<CardListParams> = ({data}) => {
+
+    const width = useResize();
+
     return (
         <Swiper
             modules={[Navigation, Mousewheel]}
             spaceBetween={20}
-            slidesPerView={3}
-            navigation
+            slidesPerView={ width > 1078 ? 3 : width > 860 ? 2 : 1 }
+            navigation={ width > 860 ? true : false }
             scrollbar={{ draggable: true }}
             mousewheel={true}
         >

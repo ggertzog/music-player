@@ -9,8 +9,9 @@ import { LikeButton } from '@/features/like-button';
 import { useVolumeControl } from '../utils/useVolumeControl';
 import { useTimelineControl } from '../utils/useTimelineControl';
 import { useTrackControl } from '../utils/useTrackControl';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
+import useAddToFavorite from '@/features/add-to-favorite';
 
 interface AudioPlayerParams {
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -28,6 +29,15 @@ export const AudioPlayer: React.FC<AudioPlayerParams> = ({audioRef}) => {
     data, 
     currentTrack: currentTrack!,
   });
+
+  const { handleAddFavoriteSong } = useAddToFavorite();
+
+
+  const addFavoriteSong = () => {
+    if(currentTrack) {
+      handleAddFavoriteSong(currentTrack);
+    }
+  }
 
   return (
     <>
@@ -55,7 +65,7 @@ export const AudioPlayer: React.FC<AudioPlayerParams> = ({audioRef}) => {
       <div className={styles['optional-container']}>
           <OptionalButton theme = 'shuffle' />
           <OptionalButton theme = 'replay' />
-          <LikeButton />
+          <LikeButton onClick={addFavoriteSong} />
           <OptionalButton theme = 'share' />
       </div>
     </>
