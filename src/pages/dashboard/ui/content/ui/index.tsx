@@ -6,6 +6,7 @@ import { SongsWidget } from "@/widgets/songs-widget";
 import useResize from "@/features/resize";
 import { PersonalList } from "@/widgets/personal-list";
 import { BurgerMenu } from "@/widgets/burger-menu";
+import { SideBar } from "@/features/sidebar";
 
 interface ContentParams {
     audioRef: React.RefObject<HTMLAudioElement>;
@@ -17,10 +18,11 @@ export const Content: React.FC<ContentParams> = ({audioRef}) => {
 
     return (
         <div className={styles.container}>
-            <div className={styles['container-box']}>
-                {width < 860 && <BurgerMenu />}
+            {/* <div className={styles['container-box']}> */}
+                {/* {width < 860 && <BurgerMenu />} */}
+                {width < 860 && <SideBar />}
                 <SearchForm />
-            </div>
+            {/* </div> */}
             <DiscoverGenre />
             <SongsWidget audioRef={audioRef} />
             {width < 1440 && <PersonalList />}

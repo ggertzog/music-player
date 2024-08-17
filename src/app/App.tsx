@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import styles from './styles.module.scss';
-import Preloader from '@/shared/ui/preloader';
+// import Preloader from '@/shared/ui/preloader';
 import { Dashboard } from '@/pages/dashboard';
 import { ChatPage } from '@/pages/chat-page';
 import { FavoritePage } from '@/pages/favorite-page';

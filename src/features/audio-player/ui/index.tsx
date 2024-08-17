@@ -9,7 +9,7 @@ import { LikeButton } from '@/features/like-button';
 import { useVolumeControl } from '../utils/useVolumeControl';
 import { useTimelineControl } from '../utils/useTimelineControl';
 import { useTrackControl } from '../utils/useTrackControl';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/app/store';
 import useAddToFavorite from '@/features/add-to-favorite';
 

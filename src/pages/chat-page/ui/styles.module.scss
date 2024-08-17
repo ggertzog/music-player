@@ -1,7 +1,21 @@
 .chat-page {
-    width: 100vw;
+    width: 100%;
     display: grid;
-    grid-template-columns: 275px auto 348px;
+    grid-template-columns: 275px 1fr 348px;
     grid-template-areas: "menu chat personal";
+    background-color: #111111;
 }
 
+@media screen and (max-width: 1440px) {
+    .chat-page {
+        grid-template-columns: 275px auto;
+        grid-template-areas: "menu chat";
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .chat-page {
+        grid-template-columns: auto;
+        grid-template-areas: "chat";
+    }
+}

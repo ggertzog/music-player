@@ -15,11 +15,6 @@ export const BurgerMenu = () => {
                 <span></span>
             </label>
             <ul className={cx('menu__box')}>
-                {/* <li><a className={cx('menu__item')} href="#">Home</a></li>
-                <li><a className={cx('menu__item')} href="#">About</a></li>
-                <li><a className={cx('menu__item')} href="#">Team</a></li>
-                <li><a className={cx('menu__item')} href="#">Contact</a></li>
-                <li><a className={cx('menu__item')} href="#">Twitter</a></li> */}
                 <ListRenderer 
                     data={NavData}
                     rendererItem={(item) => (
@@ -27,11 +22,6 @@ export const BurgerMenu = () => {
                     )}
                     className={styles.list}
                 />
-                {/* <div className={styles.list}>
-                    {data.map((item) => (
-                        <NavLink key={item.id} link={item.link} theme={item.theme} text={item.text} />
-                    ))}
-                </div> */}
             </ul>
         </div>
     );

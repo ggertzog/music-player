@@ -16,6 +16,7 @@ export const Dashboard: React.FC<DashboardParams> = ({audioRef}) => {
     return (
         <div className={styles.dashboard}>
             {width > 860 && <Navigation />}
+            
             <Content audioRef={audioRef} />
             {width > 1440 ? <PersonalList /> : null }
         </div>
